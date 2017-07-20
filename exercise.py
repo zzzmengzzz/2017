@@ -88,4 +88,35 @@ def exercise7():
 	a = [element for element in random.sample(range(0,100),random.randint(0,20)) if element%2 == 0]
 	print(a)
 
-exercise7();
+def exercise8():
+	#Make a two-player Rock-Paper-Scissors game. 
+	#Changed to one player vs computer
+	print("Available moves: rock, paper, scissors, quit (case sensitive).")
+	while True:
+		command = input("\nEnter your move:")
+		if command == "quit":
+			break
+		else:
+			move = ['rock','paper','scissors']
+			computerMove = random.choice(move)
+			if command == computerMove:
+				print("Tie!")
+			elif command == "rock" and computerMove == "scissors":
+				print("You win! Rock beats scissors!")
+			elif command == "scissors" and computerMove == "paper":
+				print("You win! Scissors beats paper!")
+			elif command == "paper" and computerMove == "rock":
+				print("You win! Paper beats rock!")
+			elif computerMove == "rock" and command == "scissors":
+				print("You lose! Computer plays rock. Rock beats scissors!")
+			elif computerMove == "scissors" and command == "paper":
+				print("You lose! Computer plays Scissors. Scissors beats paper!")
+			elif computerMove == "paper" and command == "rock":
+				print("You lose! Computer plays paper.Paper beats rock!")
+			else:
+				print("Wrong input! Try again.")
+				print("Available moves: rock, paper, scissors, quit (case sensitive).")
+
+
+
+exercise8();
