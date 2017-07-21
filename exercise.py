@@ -117,6 +117,102 @@ def exercise8():
 				print("Wrong input! Try again.")
 				print("Available moves: rock, paper, scissors, quit (case sensitive).")
 
+def exercise9():
+	#Generate a random number between 1 and 9 (including 1 and 9). 
+	#Ask the user to guess the number, then tell them whether they guessed too low, too high, or exactly right.
+	#Keep the game going until the user types “exit”
+	#Keep track of how many guesses the user has taken, and when the game ends, print this out.
+
+	count = 0
+	number = random.randint(1,9)
+	command = input("Enter your guess here:")
+
+	while command != 'exit':
+		try:
+			if int(command) == number:
+				count += 1
+				number = random.randint(1,9)
+				command = input("You got it! Enter your guess for new number here:")
+			elif int(command) > number:
+				count += 1
+				command = input("Too high! New guess:")
+			elif int(command) < number:
+				count += 1
+				command = input("Too low! New guess:")
+				
+		except ValueError:
+			print("Wrong entry")
+			break
+	print(count)
+
+#exercise10 is the same as exercise5
+
+def exercise11():
+	#Ask the user for a number and determine whether the number is prime or not.
+	try:
+		number = int(input("Enter your number:"))
+		a = range(1, number + 1)
+		isDivisor = False
+		for element in a:
+			if element == 1 or element == number:
+				continue
+			if number % element == 0:
+				isDivisor = True
+				break
+		if isDivisor:
+			print(str(number) + " is not a prime number.")
+		else:
+			print(str(number) + " is a prime number.")
+	except ValueError:
+		print("Your input is not an int.")
+
+def exercise12(listA):
+	#Write a program that takes a list of numbers and makes a new list of only the first and last elements of the given list.
+	b = [listA[0],listA[-1]]
+	return(b)
+
+def exercise13():
+	#Write a program that asks the user how many Fibonnaci numbers to generate and then generates them. 
+	try:
+		number = int(input("How many Fibonnaci numbers do you want?"))
+		a = 0
+		b = 1
+		myList = []
+		while number != 0:
+			myList.append(b)
+			temp = a
+			a = b
+			b = temp + b
+			number -=1
+		print(myList)
+
+	except ValueError:
+		print("Input must be an int!")
+
+def exercise14():
+	pass
+
+exercise13();
 
 
-exercise8();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
