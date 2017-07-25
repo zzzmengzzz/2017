@@ -1,6 +1,8 @@
 import datetime
 import random
-
+import string
+import requests
+from bs4 import BeautifulSoup
 
 #Exercise from: http://www.practicepython.org/
 
@@ -189,10 +191,45 @@ def exercise13():
 	except ValueError:
 		print("Input must be an int!")
 
-def exercise14():
-	pass
+def exercise14(myList):
+	#Write a program (function!) that takes a list and returns a new list that contains all the elements of the first list minus all the duplicates.
+	mySet = set()
+	for element in myList:
+		if element not in mySet:
+			mySet.add(element)
+	return (mySet)
 
-exercise13();
+def exercise15():
+	#Write a program (using functions!) that asks the user for a long string containing multiple words. 
+	#Print back to the user the same string, except with the words in backwards order.
+	mySentence = input("Enter your sentence:")
+	mySentence = mySentence.split()
+	mySentence.reverse()
+	print(mySentence)
+
+def exercise16():
+	#Write a password generator in Python. 
+	length = int(input('Length of your password is:'))
+	myPassword = ''
+	for iteration in range(length):
+		myPassword += random.choice(string.ascii_letters+string.digits)
+	print(myPassword)
+
+def exercise17():
+	#Use the BeautifulSoup and requests Python packages to print out a list of all the article titles on the New York Times homepage.
+	url = "https://www.nytimes.com/"
+	r = requests.get(url)
+	r_html = r.text
+	soup = BeautifulSoup(r_html)
+	titles = soup.find_all('h2',{'class':'story-heading'})
+	mylist = []
+	for row in titles:
+		mylist.append(row.text)
+	print(mylist)
+
+
+
+exercise17();
 
 
 
